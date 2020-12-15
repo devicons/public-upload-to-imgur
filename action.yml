@@ -16,4 +16,4 @@ outputs:
     description: 'The url to the img'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'

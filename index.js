@@ -8,8 +8,6 @@ try {
   const img_path = path.resolve(core.getInput('img_path'))
   const description = core.getInput("description")
   const clientId = core.getInput("client_id")
-  // const img_path = path.join("C:/Users/Admin_Think541/Downloads/Images/AK-47-B-superJumbo.jpg")
-  // const description = "Test"
   console.log("Sending request...")
   makeRequest(img_path, description, clientId)
 } catch (error) {
@@ -32,13 +30,13 @@ function makeRequest(img_path, description, clientId) {
 
   axios(axiosConfig)
     .then(res => res.data)
-    .then(data => {
-      if (!data.success) {
-        throw new Error("Request failed. Status code: " + data.status)
+    .then(res => {
+      if (!res.success) {
+        throw new Error(`Request failed. Status code: ${res.status}. Error: ${res.data.error}`)
       }
-      console.log("Request successful. Image URL is at: " + data.data.link)
+      console.log("Request successful. Image URL is at: " + res.data.link)
+      core.setOutput("imgur_url", res.data.link)
     }).catch(err => {
-      console.error(err.message)
-      console.error(err.response)
+      throw err
     })
 }

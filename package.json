@@ -2,9 +2,10 @@
   "name": "upload-to-imgur",
   "version": "1.0.0",
   "description": "A GitHub Action that can upload images to Imgur using their API",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js --license license.txt"
   },
   "repository": {
     "type": "git",
