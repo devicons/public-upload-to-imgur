@@ -1,18 +1,18 @@
 name: 'Upload To Imgur'
 description: 'Upload image(s) to Imgur using their API'
 inputs:
-  img_path:  # id
+  path:  
     description: 'Path to the images'
     required: true
-  client_id:  # id
+  client_id:  
     description: 'The CLIENT_ID of your Imgur app'
     required: true
-  description:  # id
+  description:  
     description: 'A description for this set of images'
     default: "Images uploaded by public-upload-to-imgur GitHub Action"
     required: false
 outputs:
-  imgur_url: # id of output
+  imgur_url: 
     description: 'The url to the img'
 runs:
   using: 'node12'
