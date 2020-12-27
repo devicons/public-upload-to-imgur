@@ -3,17 +3,25 @@ const axios = require('axios')
 const fs = require('fs')
 const search = require("./search")
 
-try {
+main()
+  .then(() => console.log("Upload Finished."))
+  .catch(err => {
+    core.setFailed(err);
+  })
+
+async function main() {
   const img_paths = await search.findFilesToUpload(core.getInput('path'))
   const description = core.getInput("description")
   const clientId = core.getInput("client_id")
-  console.log("Sending request...")
+  console.log("Uploading " + img_paths.length + " images...")
 
   for (let img_path of img_paths) {
     uploadToImgur(img_path, description, clientId)
+      .then()
+      .catch(err => {
+        throw err
+      })
   }
-} catch (error) {
-  core.setFailed(error.message);
 }
 
 function uploadToImgur(img_path, description, clientId) {
@@ -30,7 +38,7 @@ function uploadToImgur(img_path, description, clientId) {
     }
   }
 
-  axios(axiosConfig)
+  return axios(axiosConfig)
     .then(res => res.data)
     .then(res => {
       if (!res.success) {
@@ -38,7 +46,6 @@ function uploadToImgur(img_path, description, clientId) {
       }
       console.log("Request successful. Image URL is at: " + res.data.link)
       core.setOutput("imgur_url", res.data.link)
-    }).catch(err => {
-      throw err
     })
+    .catch(err => {throw err})
 }
