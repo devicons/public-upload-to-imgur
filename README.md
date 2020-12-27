@@ -76,7 +76,7 @@ steps:
 
 **Final Result**
 
-Here's a working example from our repo:
+Here's a working example from our [devicon](https://github.com/devicons/devicon) repo:
 
 ![GitHub bot using the action](docs/example.PNG)
 
