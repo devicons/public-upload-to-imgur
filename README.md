@@ -78,7 +78,7 @@ steps:
 
 Here's a working example from our repo:
 
-![GitHub bot using the action](./docs/example.png)
+![GitHub bot using the action](docs/example.PNG)
 
 ## Credits ##
 The script for parsing multiple paths and glob inputs was taken from the [upload-artifacts](https://github.com/actions/upload-artifact/blob/main/src/search.ts) repo.
