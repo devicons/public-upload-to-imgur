@@ -5,8 +5,9 @@ Note: "anonymous" means that the image is not tied to an account (see [this](htt
 This action is used as part of the peek-icons workflow in the [devicon](https://github.com/devicons/devicon) repo to automate the
 icon checking process.
 
-If you are looking for an npm package instead of an action, consider [this repo](https://github.com/shinshin86/imgur-anonymous-uploader).
-
+**The following features are experimental:**
+- Globs, folder and multi-line inputs.
+- Outputs for multiple uploads.
 
 ## How To Use ##
 
@@ -14,6 +15,28 @@ If you are looking for an npm package instead of an action, consider [this repo]
 1. Sign up for an API client id (see [this](https://apidocs.imgur.com/#intro)).
   * Note: You do not need an OATH token for this action.
 2. Add the client id to the repo's secrets (see [this](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#in-this-article))
+
+
+**Input**
+```
+path:
+  description: 'Path to the images. Can be a single file path, folder or glob.'
+  required: true
+client_id:  
+  description: 'The CLIENT_ID of your Imgur app'
+  required: true
+description:  
+  description: 'A description for this set of images'
+  default: "Images uploaded by public-upload-to-imgur GitHub Action"
+  required: false
+```
+
+
+**Output**
+```
+  imgur_url: 
+    description: 'The url to the img. If there's only one url, return a string. Else, return a JSON.stringified array.'
+```
 
 
 **Upload a Picture Only**
@@ -27,18 +50,19 @@ steps:
       description: My picture  # optional
 ```
 
-**Using the output**
+**Using the output after uploading one file**
 ```
 steps:
   - name: Upload a picture
     uses: devicons/public-upload-to-imgur@v1
+    id: imgur_step
     with:
       path: ./img.png 
       client_id: ${{secrets.IMGUR_CLIENT_ID}} 
     - name: Comment on the PR about the result
-      uses: github-actions-up-and-running/pr-comment@v1.0.1
+      uses: github-actions-up-and-running/pr-comment@v1.0.1  # you can use any action that you want. This is only an example
       env:
-        IMG_URL: ${{ steps.imgur_step.outputs.imgur_url }}
+        IMG_URL: ${{ steps.imgur_step.outputs.imgur_url }}  # get the output of the step above using its id
         MESSAGE: |
           Here is the picture that was uploaded:
           ![Image]({0}) # markdown syntax for displaying a picture
@@ -74,9 +98,11 @@ steps:
   path: path/**/[abc]rtifac?/*
 ```
 
+
 **Final Result**
 
-Here's a working example from our [devicon](https://github.com/devicons/devicon) repo:
+
+Here's a real life example from our [devicon](https://github.com/devicons/devicon) repo:
 
 ![GitHub bot using the action](docs/example.PNG)
 

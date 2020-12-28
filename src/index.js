@@ -15,12 +15,19 @@ async function main() {
   const clientId = core.getInput("client_id")
   console.log("Uploading " + img_paths.length + " images...")
 
+  let links = []
   for (let img_path of img_paths) {
     uploadToImgur(img_path, description, clientId)
-      .then()
+      .then(link => links.push(link))
       .catch(err => {
         throw err
       })
+  }
+
+  if (links.length == 1) {
+    core.setOutput("imgur_url", links[0])
+  } else {
+    core.setOutput("imgur_url", JSON.stringify(links))
   }
 }
 
@@ -45,7 +52,7 @@ function uploadToImgur(img_path, description, clientId) {
         throw new Error(`Request failed. Status code: ${res.status}. Error: ${res.data.error}`)
       }
       console.log("Request successful. Image URL is at: " + res.data.link)
-      core.setOutput("imgur_url", res.data.link)
+      return res.data.link
     })
     .catch(err => {throw err})
 }
