@@ -13,7 +13,7 @@ icon checking process.
 
 **Prerequisite**
 1. Sign up for an API client id (see [this](https://apidocs.imgur.com/#intro)).
-  * Note: You do not need an OATH token for this action.
+  * Note: You do not need an OAuth token for this action.
 2. Add the client id to the repo's secrets (see [this](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#in-this-article))
 
 
