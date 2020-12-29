@@ -15,6 +15,11 @@ async function main() {
   const clientId = core.getInput("client_id")
   console.log("Uploading " + img_paths.length + " images...")
 
+  if (img_paths.length == 0) {
+    core.info("No image paths found. Skipping upload and exiting script.")
+    return;
+  }
+
   let links = []
   for (let img_path of img_paths) {
     uploadToImgur(img_path, description, clientId)
