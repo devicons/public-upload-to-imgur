@@ -10,16 +10,18 @@ main()
   })
 
 async function main() {
-  const img_paths = await search.findFilesToUpload(core.getInput('path'))
   const description = core.getInput("description")
   const clientId = core.getInput("client_id")
+  const img_paths = await search.findFilesToUpload(
+    core.getInput('path')
+  ).filesToUpload
 
-  console.log("Uploading " + img_paths.length + " images...", img_paths)
   if (!img_paths) {
     console.log("No image paths found. Skipping upload and exiting script.")
     return;
   }
 
+  console.log("Uploading images: \n", img_paths.join("\n"))
   let links = []
   for (let img_path of img_paths) {
     uploadToImgur(img_path, description, clientId)
