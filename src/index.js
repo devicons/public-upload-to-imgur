@@ -12,16 +12,19 @@ main()
 async function main() {
   const description = core.getInput("description")
   const clientId = core.getInput("client_id")
-  const img_paths = await search.findFilesToUpload(
+  const result = await search.findFilesToUpload(
     core.getInput('path')
-  ).filesToUpload
+  )
+  const img_paths = result.filesToUpload
 
+  console.log(result)
+  console.log("Found these images: \n", img_paths.join("\n"))
   if (!img_paths) {
     console.log("No image paths found. Skipping upload and exiting script.")
     return;
   }
 
-  console.log("Uploading images: \n", img_paths.join("\n"))
+  console.log("Uploading images...")
   let links = []
   for (let img_path of img_paths) {
     uploadToImgur(img_path, description, clientId)
