@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build src/index.js --license license.txt"
+    "build": "ncc build src/index.js --license license.txt -m"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
+    "@actions/glob": "^0.1.1",
     "axios": "^0.21.0"
   },
   "devDependencies": {
