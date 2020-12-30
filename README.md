@@ -34,8 +34,8 @@ description:
 
 **Output**
 ```
-  imgur_url: 
-    description: 'The url to the img. If there's only one url, return a string. Else, return a JSON.stringified array.'
+  imgur_urls: 
+    description: 'The urls to the images as a JSON.stringified array.'
 ```
 
 

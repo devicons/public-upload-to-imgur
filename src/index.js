@@ -3,9 +3,7 @@ const axios = require('axios')
 const fs = require('fs')
 const search = require("./search")
 
-main()
-  .then(() => console.log("Upload Finished."))
-  .catch(err => {
+main().catch(err => {
     core.setFailed(err);
   })
 
@@ -29,12 +27,7 @@ async function main() {
       return uploadToImgur(img_path, description, clientId)
     })
   )
-
-  if (links.length == 1) {
-    core.setOutput("imgur_url", links[0])
-  } else {
-    core.setOutput("imgur_url", JSON.stringify(links))
-  }
+  core.setOutput("imgur_url", JSON.stringify(links))
   console.log("Script finished.")
 }
 
