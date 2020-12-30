@@ -27,7 +27,8 @@ async function main() {
       return uploadToImgur(img_path, description, clientId)
     })
   )
-  core.setOutput("imgur_url", JSON.stringify(links))
+  console.log(links);
+  core.setOutput("imgur_urls", JSON.stringify(links))
   console.log("Script finished.")
 }
 
