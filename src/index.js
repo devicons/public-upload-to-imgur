@@ -15,11 +15,11 @@ async function main() {
   )
   const img_paths = result.filesToUpload
 
-  console.log("Found these images: \n", img_paths.join("\n"))
   if (!img_paths) {
     console.log("No image paths found. Skipping upload and exiting script.")
     return;
   }
+  console.log("Found these images: \n", img_paths.join("\n"))
 
   console.log("Uploading images...")
   let links = await Promise.all(
