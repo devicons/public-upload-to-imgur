@@ -5,10 +5,6 @@ Note: "anonymous" means that the image is not tied to an account (see [this](htt
 This action is used as part of the peek-icons workflow in the [devicon](https://github.com/devicons/devicon) repo to automate the
 icon checking process.
 
-**The following features are experimental:**
-- Globs, folder and multi-line inputs.
-- Outputs for multiple uploads.
-
 ## How To Use ##
 
 **Prerequisite**
@@ -62,7 +58,8 @@ steps:
     - name: Comment on the PR about the result
       uses: github-actions-up-and-running/pr-comment@v1.0.1  # you can use any action that you want. This is only an example
       env:
-        IMG_URL: ${{ steps.imgur_step.outputs.imgur_url }}  # get the output of the step above using its id
+        # recall that this action returns a JSON.stringified array
+        IMG_URL: ${{ fromJSON(steps.imgur_step.outputs.imgur_urls)[0] }}  # get the output of the step above using its id
         MESSAGE: |
           Here is the picture that was uploaded:
           ![Image]({0}) # markdown syntax for displaying a picture
@@ -107,6 +104,8 @@ Here's a real life example from our [devicon](https://github.com/devicons/devico
 ![GitHub bot using the action](docs/example.PNG)
 
 ## Credits ##
-The script for parsing multiple paths and glob inputs was taken from the [upload-artifacts](https://github.com/actions/upload-artifact/blob/main/src/search.ts) repo.
+The script for parsing multiple paths and glob inputs was taken from the [upload-artifacts](https://github.com/actions/upload-artifact/blob/main/src/search.ts) repo. 
+
+Its conversion from TypeScript to JavaScript was done using [extendsclass.com](https://extendsclass.com/typescript-to-javascript.html)
 
 The [API](https://apidocs.imgur.com/#intro) is provided by Imgur.
