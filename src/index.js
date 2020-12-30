@@ -17,7 +17,6 @@ async function main() {
   )
   const img_paths = result.filesToUpload
 
-  console.log(result)
   console.log("Found these images: \n", img_paths.join("\n"))
   if (!img_paths) {
     console.log("No image paths found. Skipping upload and exiting script.")
@@ -25,20 +24,18 @@ async function main() {
   }
 
   console.log("Uploading images...")
-  let links = []
-  for (let img_path of img_paths) {
-    uploadToImgur(img_path, description, clientId)
-      .then(link => links.push(link))
-      .catch(err => {
-        throw err
-      })
-  }
+  let links = await Promise.all(
+    img_paths.map(img_path => {
+      return uploadToImgur(img_path, description, clientId)
+    })
+  )
 
   if (links.length == 1) {
     core.setOutput("imgur_url", links[0])
   } else {
     core.setOutput("imgur_url", JSON.stringify(links))
   }
+  console.log("Script finished.")
 }
 
 function uploadToImgur(img_path, description, clientId) {
