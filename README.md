@@ -102,7 +102,7 @@ Here's an usecase from our [devicon](https://github.com/devicons/devicon) repo:
 
 ![GitHub bot using the action](docs/example.PNG)
 
-You can also view the [example workflow]() and the [resulting action]() in this repo.
+You can also view the [example workflow](https://github.com/devicons/public-upload-to-imgur/blob/main/.github/workflows/demo.yml) and the [resulting action](https://github.com/devicons/public-upload-to-imgur/actions/runs/453537510) in this repo.
 
 ## Credits ##
 The script for parsing multiple paths and glob inputs was taken from the [upload-artifacts](https://github.com/actions/upload-artifact/blob/main/src/search.ts) repo. 
