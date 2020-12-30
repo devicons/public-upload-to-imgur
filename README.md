@@ -39,7 +39,7 @@ description:
 ```
 steps:
   - name: Upload a picture
-    uses: devicons/public-upload-to-imgur@v1
+    uses: devicons/public-upload-to-imgur@v2  # Use v2 for the most stable version
     with:
       path: ./img.png  # required
       client_id: ${{secrets.IMGUR_CLIENT_ID}}  # required
@@ -50,7 +50,7 @@ steps:
 ```
 steps:
   - name: Upload a picture
-    uses: devicons/public-upload-to-imgur@v1
+    uses: devicons/public-upload-to-imgur@v2
     id: imgur_step
     with:
       path: ./img.png 
@@ -70,7 +70,7 @@ steps:
 
 **Upload Content of a Directory**
 ```
-- uses: devicons/public-upload-to-imgur@v1
+- uses: devicons/public-upload-to-imgur@v2
   with:
     path: path/to/images/ # or path/to/images
     client_id: ${{secrets.IMGUR_CLIENT_ID}} 
@@ -79,7 +79,7 @@ steps:
 
 **Multiple Paths**
 ```
-- uses: devicons/public-upload-to-imgur@v1
+- uses: devicons/public-upload-to-imgur@v2
   with:
   path: |
       path/output/bin/
@@ -90,7 +90,7 @@ steps:
 
 **Wild Cards**
 ```
-- uses: devicons/public-upload-to-imgur@v1
+- uses: devicons/public-upload-to-imgur@v2
   with:
   path: path/**/[abc]rtifac?/*
 ```
