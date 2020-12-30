@@ -5,6 +5,10 @@ jobs:
     name: Demo the repo's capability
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name}}
       - name: Upload a single file
         uses: devicons/public-upload-to-imgur@v2
         id: step_1
