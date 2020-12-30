@@ -10,7 +10,7 @@ jobs:
         uses: devicons/public-upload-to-imgur@develop
         id: step_1
         with:
-          path: ./docs/example.png
+          path: ./docs/example.PNG
           client_id: ${{secrets.IMGUR_CLIENT_ID}}
       - name: Upload a folder with multiple files
         uses: devicons/public-upload-to-imgur@develop
@@ -26,7 +26,7 @@ jobs:
           client_id: ${{secrets.IMGUR_CLIENT_ID}}
       - name: View results
         env:
-          STEP_1_RESULT: ${{ steps.step_1.outputs.imgur_urls }}  # view only one result
+          STEP_1_RESULT: ${{ fromJSON(steps.step_1.outputs.imgur_urls)[0] }}  # view only one result
           STEP_2_RESULT: ${{ steps.step_2.outputs.imgur_urls }}  
           STEP_3_RESULT: ${{ steps.step_3.outputs.imgur_urls }}  
         run: |
