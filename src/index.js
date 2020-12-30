@@ -2,6 +2,7 @@ const core = require('@actions/core')
 const axios = require('axios')
 const fs = require('fs')
 const search = require("./search")
+const path = require("path")
 
 main().catch(err => {
     core.setFailed(err);
@@ -14,20 +15,18 @@ async function main() {
     core.getInput('path')
   )
   const img_paths = result.filesToUpload
-
-  console.log("Found these images: \n", img_paths.join("\n"))
-  if (!img_paths) {
+  
+  if (!img_paths || img_paths.length == 0) {
     console.log("No image paths found. Skipping upload and exiting script.")
     return;
   }
+  console.log("Uploading these images: \n", img_paths.join("\n"))
 
-  console.log("Uploading images...")
   let links = await Promise.all(
     img_paths.map(img_path => {
       return uploadToImgur(img_path, description, clientId)
     })
   )
-  console.log(links);
   core.setOutput("imgur_urls", JSON.stringify(links))
   console.log("Script finished.")
 }
