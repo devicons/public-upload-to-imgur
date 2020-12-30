@@ -1,0 +1,34 @@
+name: Demo the action
+on: workflow_dispatch
+jobs:
+  demo:
+    name: Demo the repo's capability
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Upload a single file
+        uses: devicons/public-upload-to-imgur@v2
+        id: step_1
+        with:
+          path: ./docs/example.png
+          client_id: ${{secrets.IMGUR_CLIENT_ID}}
+      - name: Upload a folder with multiple files
+        uses: devicons/public-upload-to-imgur@v2
+        id: step_2
+        with:
+          path: ./docs/
+          client_id: ${{secrets.IMGUR_CLIENT_ID}}
+      - name: Upload a glob pattern
+        uses: devicons/public-upload-to-imgur@v2
+        id: step_3
+        with:
+          path: ./*.png
+          client_id: ${{secrets.IMGUR_CLIENT_ID}}
+      - name: View results
+        env:
+          STEP_1_RESULT: ${{ fromJSON(steps.step_1.outputs.imgurls)[0] }}  # view only one result
+          STEP_2_RESULT: ${{ steps.step_2.outputs.imgurls }}  
+          STEP_3_RESULT: ${{ steps.step_3.outputs.imgurls }}  
+        run: |
+          echo $STEP1_RESULT
+          echo $STEP2_RESULT
+          echo $STEP3_RESULT
