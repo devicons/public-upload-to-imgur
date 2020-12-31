@@ -1,7 +1,8 @@
 name: 'Publish on imgur'
 description: 'Upload image(s) to imgur using their API'
-icon: 'image'
-color: 'green'
+branding:
+  icon: 'image'
+  color: 'green'
 inputs:
   path:  
     description: 'Path to the images'
