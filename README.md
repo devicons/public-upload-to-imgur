@@ -33,6 +33,10 @@ description:
 ```
   imgur_urls: 
     description: 'The urls to the images as a JSON.stringified array.'
+    example: '["https://i.imgur.com/j1KnFp1.png", "https://i.imgur.com/UfhRqDR.png"]'
+  markdown_urls:
+    description: 'The urls to the images in GitHub image markdown formats as a JSON.stringified array.'
+    example: '["![Imgur Images](https://i.imgur.com/j1KnFp1.png)", "![Imgur Images](https://i.imgur.com/UfhRqDR.png)"]'
 ```
 
 

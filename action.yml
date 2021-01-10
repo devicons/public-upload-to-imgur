@@ -1,7 +1,8 @@
 name: 'Publish on imgur'
 description: 'Upload image(s) to imgur using their API'
-icon: 'image'
-color: 'green'
+branding:
+  icon: 'image'
+  color: 'green'
 inputs:
   path:  
     description: 'Path to the images'
@@ -16,6 +17,8 @@ inputs:
 outputs:
   imgur_urls: 
     description: 'The urls to the images as a JSON.stringified array.'
+  markdown_urls:
+    description: 'The urls to the images in GitHub image markdown formats as a JSON.stringified array.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
