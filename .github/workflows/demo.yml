@@ -28,7 +28,7 @@ jobs:
         env:
           STEP_1_RESULT: ${{ fromJSON(steps.step_1.outputs.imgur_urls)[0] }}  # view only one result
           STEP_2_RESULT: ${{ steps.step_2.outputs.imgur_urls }}  
-          STEP_3_RESULT: ${{ steps.step_3.outputs.imgur_urls }}  
+          STEP_3_RESULT: ${{ steps.step_3.outputs.markdown_urls }}  
         run: |
           echo $STEP_1_RESULT
           echo $STEP_2_RESULT
