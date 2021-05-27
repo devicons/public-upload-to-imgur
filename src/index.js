@@ -37,7 +37,7 @@ async function main() {
 function uploadToImgur(img_path, description, clientId) {
   const axiosConfig = {
     method: "post",
-    url: "https://api.imgur.com/3/image",
+    url: "https://api.imgur.com/3/upload",
     headers: {
       "Authorization": `Client-ID ${clientId}`
     },
