@@ -3,12 +3,14 @@ A GitHub Action that can upload "anonymous" images to Imgur using their API and 
 Note: "anonymous" means that the image is not tied to an account (see [this](https://apidocs.imgur.com/#intro)).
 
 **Purpose** 
+
 This action is used as part of the peek-icons workflow in the [devicon](https://github.com/devicons/devicon) repo to automate the
 icon checking process. Our workflow would generate screenshots using Selenium, upload it to Imgur (using this action) then publish a comment on a PR showing the result (using [another action](https://github.com/marketplace/actions/pr-comment)).
 
 ## How To Use ##
 
 **Prerequisite**
+
 1. Sign up for an API client id (see [this](https://apidocs.imgur.com/#intro)).
   * Note: You do not need an OAuth token for this action.
 2. Add the client id to the repo's secrets (see [this](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#in-this-article))
@@ -102,6 +104,7 @@ steps:
 
 
 **Real Life Examples**
+
 Here's an usecase from our [devicon](https://github.com/devicons/devicon) repo:
 
 ![GitHub bot using the action](docs/example.PNG)
