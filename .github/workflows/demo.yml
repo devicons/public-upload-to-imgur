@@ -7,19 +7,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Upload a single file
-        uses: devicons/public-upload-to-imgur@develop
+        uses: devicons/public-upload-to-imgur@main
         id: step_1
         with:
           path: ./docs/example.PNG
           client_id: ${{secrets.IMGUR_CLIENT_ID}}
       - name: Upload a folder with multiple files
-        uses: devicons/public-upload-to-imgur@develop
+        uses: devicons/public-upload-to-imgur@main
         id: step_2
         with:
           path: ./docs/
           client_id: ${{secrets.IMGUR_CLIENT_ID}}
       - name: Upload a glob pattern
-        uses: devicons/public-upload-to-imgur@develop
+        uses: devicons/public-upload-to-imgur@main
         id: step_3
         with:
           path: ./*/*.png
