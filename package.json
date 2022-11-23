@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Thomas-Boi/upload-to-imgur.git"
+    "url": "git+https://github.com/devicons/upload-to-imgur.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["imgur", "icons", "svg"],
+  "author": "Thomas Bui",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Thomas-Boi/upload-to-imgur/issues"
+    "url": "https://github.com/devicons/upload-to-imgur/issues"
   },
-  "homepage": "https://github.com/Thomas-Boi/upload-to-imgur#readme",
+  "homepage": "https://github.com/devicons/upload-to-imgur#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
@@ -26,5 +26,8 @@
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
