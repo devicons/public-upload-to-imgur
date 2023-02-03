@@ -3,7 +3,7 @@
 A GitHub Action that can upload "anonymous" images to Imgur using their API that gives you the URL of the newly created image.
 Note: By "anonymous" we mean that the image is not tied to an account (see [this](https://apidocs.imgur.com/#intro)).
 
-**Purpose** 
+**Purpose**
 
 This action is used as part of the Peek Icons workflow in the [Devicon](https://github.com/devicons/devicon) repository to automate the
 icon checking process. Our workflow would generate screenshots using Selenium, upload it to Imgur (using this action), then publish a comment on a PR showing the result (using [another action](https://github.com/marketplace/actions/pr-comment)).
@@ -13,7 +13,9 @@ icon checking process. Our workflow would generate screenshots using Selenium, u
 **Prerequisites**
 
 1. Sign up for an API client ID (see [this](https://apidocs.imgur.com/#intro)).
-  * Note: You do not need an OAuth token for this action.
+
+* Note: You do not need an OAuth token for this action.
+
 2. Add the client id to the repo's secrets (see [this](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#in-this-article))
 
 **Input**
@@ -31,10 +33,9 @@ description:
   required: false
 ```
 
-
 **Output**
 
-```
+```plaintext
   imgur_urls: 
     description: 'The urls to the images as a JSON.stringified array.'
     example: '["https://i.imgur.com/j1KnFp1.png", "https://i.imgur.com/UfhRqDR.png"]'
@@ -43,13 +44,12 @@ description:
     example: '["![Imgur Images](https://i.imgur.com/j1KnFp1.png)", "![Imgur Images](https://i.imgur.com/UfhRqDR.png)"]'
 ```
 
-
 **Upload a Picture Only**
 
 ```yaml
 steps:
   - name: Upload a picture
-    uses: devicons/public-upload-to-imgur@v2.2.1  # Use this for the most stable version
+    uses: devicons/public-upload-to-imgur@v2.2.2  # Use this for the most stable version
     with:
       path: ./img.png  # required
       client_id: ${{secrets.IMGUR_CLIENT_ID}}  # required
@@ -61,7 +61,7 @@ steps:
 ```yaml
 steps:
   - name: Upload a picture
-    uses: devicons/public-upload-to-imgur@v2.2.1
+    uses: devicons/public-upload-to-imgur@v2.2.2
     id: imgur_step
     with:
       path: ./img.png 
@@ -82,17 +82,16 @@ steps:
 **Upload Content of a Directory**
 
 ```yaml
-- uses: devicons/public-upload-to-imgur@v2.2.1
+- uses: devicons/public-upload-to-imgur@v2.2.2
   with:
     path: path/to/images/ # or path/to/images
     client_id: ${{secrets.IMGUR_CLIENT_ID}} 
 ```
 
-
 **Multiple Paths**
 
 ```yaml
-- uses: devicons/public-upload-to-imgur@v2.2.1
+- uses: devicons/public-upload-to-imgur@v2.2.2
   with:
   path: |
       path/output/bin/
@@ -100,15 +99,13 @@ steps:
       !path/**/*.tmp
 ```
 
-
 **Wild Cards**
 
 ```yaml
-- uses: devicons/public-upload-to-imgur@v2.2.1
+- uses: devicons/public-upload-to-imgur@v2.2.2
   with:
   path: path/**/[abc]rtifac?/*
 ```
-
 
 **Real Life Examples**
 
@@ -120,7 +117,7 @@ You can also view the [example workflow](https://github.com/devicons/public-uplo
 
 ## Credits
 
-The script for parsing multiple paths and glob inputs was taken from the [upload-artifacts](https://github.com/actions/upload-artifact/blob/main/src/search.ts) repo. 
+The script for parsing multiple paths and glob inputs was taken from the [`upload-artifacts`](https://github.com/actions/upload-artifact/blob/main/src/search.ts) repo.
 
 Its conversion from TypeScript to JavaScript was done using [ExtendsClass](https://extendsclass.com/typescript-to-javascript.html)
 
