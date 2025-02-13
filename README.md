@@ -1,7 +1,7 @@
 # Publish to Imgur
 
-A GitHub Action that can upload "anonymous" images to Imgur using their API that gives you the URL of the newly created image.
-Note: By "anonymous" we mean that the image is not tied to an account (see [this](https://apidocs.imgur.com/#intro)).
+A GitHub Action that can upload "anonymous" (aka not tied to an account) images to Imgur using their API that gives you the URL of the newly created image.
+See [the Imgur docs](https://apidocs.imgur.com/#intro) for more details.
 
 **Purpose**
 
@@ -113,7 +113,7 @@ Here's an usecase from our [Devicon](https://github.com/devicons/devicon) reposi
 
 ![GitHub bot using the action](docs/example.PNG)
 
-You can also view the [example workflow](https://github.com/devicons/public-upload-to-imgur/blob/main/.github/workflows/demo.yml) and the [resulting action](https://github.com/devicons/public-upload-to-imgur/actions/runs/453537510) in this repository.
+You can also view an [example workflow](https://github.com/devicons/public-upload-to-imgur/blob/main/.github/workflows/demo.yml) in this repository.
 
 ## Credits
 
