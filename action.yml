@@ -15,6 +15,8 @@ inputs:
     default: "Images uploaded by public-upload-to-imgur GitHub Action"
     required: false
 outputs:
+  input paths:
+    description: 'The local paths to the input images that were uploaded.'
   imgur_urls: 
     description: 'The urls to the images as a JSON.stringified array.'
   markdown_urls:

@@ -36,6 +36,9 @@ description:
 **Output**
 
 ```plaintext
+  input_paths:
+    description: 'The local paths to the input images that were uploaded.'
+    example: '["./img1.png", "./img2.png"]'
   imgur_urls: 
     description: 'The urls to the images as a JSON.stringified array.'
     example: '["https://i.imgur.com/j1KnFp1.png", "https://i.imgur.com/UfhRqDR.png"]'

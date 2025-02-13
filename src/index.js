@@ -28,6 +28,7 @@ async function main() {
     })
   )
 
+  core.setOutput("input_paths", JSON.stringify(img_paths))
   core.setOutput("imgur_urls", JSON.stringify(links))
   let markdown_urls = links.map(link => `![Imgur Images](${link})`)
   core.setOutput("markdown_urls", JSON.stringify(markdown_urls))
